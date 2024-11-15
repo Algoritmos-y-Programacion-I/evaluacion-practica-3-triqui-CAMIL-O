@@ -69,10 +69,25 @@ public class Executable {
     }
 
     private void jugadaHumano() {
-        // Implementación de jugada de humano
+        System.out.println("Ingrese la fila de su jugada(Las filas van de 0 hasta 2)");
+        int i = reader.nextInt();
+        System.out.println("Ingrese la columna de su jugada(Las columnas van de 0 hasta 2)");
+        int j = reader.nextInt();
+        if (cont.jugadaHumano(i, j)) {
+            System.out.println("¡Jugada realizada!");
+            imprimirTablero();
+        } else {
+            System.out.println("Casilla ocupada o coordenadas inválidas.");
+        }
     }
 
     private void validarGanador() {
-        // Implementación de la validación si alguien ya ganó el triqui
+        String ganador = cont.encontrarGanador();
+        if (ganador != null) {
+            System.out.println("Ya existe un ganador! El ganador es: " + (ganador.equals("X") ? "Máquina" : "Jugador Humano"));
+            flag = true; 
+        } else {
+            System.out.println("Aun no se ha encontrado un ganador. Continúe jugando.");
+        }
     }
 }

@@ -56,4 +56,46 @@ public class Controladora {
         } while (!tableroTresEnRaya[i][j].equals(" "));
         tableroTresEnRaya[i][j] = "X";
     }
+
+  
+    public boolean jugadaHumano(int i, int j) {
+        if (i >= 0 && i < 3 && j >= 0 && j < 3 && tableroTresEnRaya[i][j].equals(" ")) {
+            tableroTresEnRaya[i][j] = "O";
+            return true;
+        }
+        return false;
+    }
+
+    public String encontrarGanador() {
+
+        for (int i = 0; i < 3; i++) {
+            if (tableroTresEnRaya[i][0].equals(tableroTresEnRaya[i][1]) &&
+                tableroTresEnRaya[i][1].equals(tableroTresEnRaya[i][2]) &&
+                !tableroTresEnRaya[i][0].equals(" ")) {
+                return tableroTresEnRaya[i][0];
+            }
+
+            if (tableroTresEnRaya[0][i].equals(tableroTresEnRaya[1][i]) &&
+                tableroTresEnRaya[1][i].equals(tableroTresEnRaya[2][i]) &&
+                !tableroTresEnRaya[0][i].equals(" ")) {
+                return tableroTresEnRaya[0][i];
+            }
+        }
+
+        if (tableroTresEnRaya[0][0].equals(tableroTresEnRaya[1][1]) &&
+            tableroTresEnRaya[1][1].equals(tableroTresEnRaya[2][2]) &&
+            !tableroTresEnRaya[0][0].equals(" ")) {
+            return tableroTresEnRaya[0][0];
+        }
+
+        if (tableroTresEnRaya[0][2].equals(tableroTresEnRaya[1][1]) &&
+            tableroTresEnRaya[1][1].equals(tableroTresEnRaya[2][0]) &&
+            !tableroTresEnRaya[0][2].equals(" ")) {
+            return tableroTresEnRaya[0][2];
+        }
+
+        return null; 
+    }
+
+
 }
